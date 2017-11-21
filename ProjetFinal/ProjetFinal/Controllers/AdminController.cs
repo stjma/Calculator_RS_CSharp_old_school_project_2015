@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetFinal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ namespace ProjetFinal.Controllers
 {
     public class AdminController : Controller
     {
-
+        private projetFinalEntities1 projetFinalEntities1 = new projetFinalEntities1();
 
         // GET: Admin
         public ActionResult Index()
@@ -18,7 +19,8 @@ namespace ProjetFinal.Controllers
 
         public PartialViewResult AllUser()
         {
-            return PartialView();
+            List<AspNetUser> AspNetUser = projetFinalEntities1.AspNetUsers.ToList();
+            return PartialView(AspNetUser);
         }
 
         public PartialViewResult DeleteUser()
@@ -38,32 +40,72 @@ namespace ProjetFinal.Controllers
 
         public PartialViewResult AllXpTable()
         {
-            return PartialView();
+            List<xpTable> xpTable = projetFinalEntities1.xpTables.ToList();
+            return PartialView(xpTable);
         }
 
-        public PartialViewResult AllXp()
+        public PartialViewResult AllXp(int? idXpTable)
         {
-            return PartialView();
+            List<xp> xp;
+            if (idXpTable != null)
+            {
+                xp = projetFinalEntities1.xps.ToList().FindAll(x => x.id_xpTable == 1);
+            }
+            else
+            {
+                xp = projetFinalEntities1.xps.ToList();
+            }
+            
+            return PartialView(xp);
         }
 
-        public PartialViewResult DeleteXpTable()
+        public ActionResult DeleteXpTable(int idXpTable)
         {
-            return PartialView();
+            xpTable xpTable = projetFinalEntities1.xpTables.ToList().Find(x => x.id == idXpTable);
+            projetFinalEntities1.xpTables.Remove(xpTable);
+            return RedirectToAction("index");
         }
 
-        public PartialViewResult DeleteXp()
+        public ActionResult DeleteXp(int idXp)
         {
-            return PartialView();
+            xp xp = projetFinalEntities1.xps.ToList().Find(x => x.id == idXp);
+            projetFinalEntities1.xps.Remove(xp);
+            return RedirectToAction("index");
         }
 
         public PartialViewResult AllSkill()
         {
-            return PartialView();
+            List<skill> skill = projetFinalEntities1.skills.ToList();
+            return PartialView(skill);
         }
 
-        public PartialViewResult AllCompetence()
+        public PartialViewResult AllCompetence(int? idSkill)
         {
-            return PartialView();
+            List<competence> competence;
+            if (idSkill != null)
+            {
+                competence = projetFinalEntities1.competences.ToList().FindAll(x => x.id_skillName == idSkill);
+            }
+            else
+            {
+                competence = projetFinalEntities1.competences.ToList();
+            }
+            
+            return PartialView(competence);
+        }
+
+        public ActionResult DeleteSkill(int idSkill)
+        {
+            skill skill = projetFinalEntities1.skills.ToList().Find(x => x.id == idSkill);
+            projetFinalEntities1.skills.Remove(skill);
+            return RedirectToAction("index");
+        }
+
+        public ActionResult DeleteCompetence(int idCompentence)
+        {
+            competence competence = projetFinalEntities1.competences.ToList().Find(x => x.id == idCompentence);
+            projetFinalEntities1.competences.Remove(competence);
+            return RedirectToAction("index");
         }
     }
 }
