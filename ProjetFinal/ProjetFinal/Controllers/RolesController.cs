@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
 
 namespace ProjetFinal.Controllers
 {
     public class RolesController : Controller
     {
-        public ActionResult Index()
+        public PartialViewResult Index()
         {
             // Populate Dropdown Lists
             var context = new ApplicationDbContext();
@@ -26,7 +27,7 @@ namespace ProjetFinal.Controllers
 
             ViewBag.Message = "";
 
-            return View();
+            return PartialView();
         }
 
 
@@ -51,12 +52,12 @@ namespace ProjetFinal.Controllers
                 });
                 context.SaveChanges();
                 ViewBag.Message = "Role created successfully !";
-                return RedirectToAction("Index");
+                return RedirectToAction("index");
             }
             catch
             {
                 //return View();
-                return RedirectToAction("Index");
+                return View();
             }
         }
 

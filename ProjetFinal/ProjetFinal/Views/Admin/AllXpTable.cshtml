@@ -4,6 +4,10 @@
     ViewBag.Title = "AllXpTable";
 }
 
+@{
+    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace };
+}
+
 <h2>AllXpTable</h2>
 
 <p>
@@ -24,7 +28,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "AllXp", new { idXpTable = item.id }) |
+            @Ajax.ActionLink("Details", "AllXp", new { idXpTable = item.id }, ao, null)|
             @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>
