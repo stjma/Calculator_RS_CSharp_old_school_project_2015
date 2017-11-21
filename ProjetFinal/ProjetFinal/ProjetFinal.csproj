@@ -203,7 +203,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\competence.cs">
+      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>dbProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\dbProjetFinal.Context.cs">

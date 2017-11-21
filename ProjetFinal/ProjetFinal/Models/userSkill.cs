@@ -16,7 +16,7 @@ namespace ProjetFinal.Models
     {
         public int id { get; set; }
         public Nullable<int> id_skill { get; set; }
-        public Nullable<int> id_user { get; set; }
+        public string id_user { get; set; }
         public Nullable<int> lvl { get; set; }
         public Nullable<decimal> xp { get; set; }
     

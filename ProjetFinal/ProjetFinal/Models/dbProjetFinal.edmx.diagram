@@ -4,16 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b6827c01a17742ca94d55ac40b4bf720" Name="Diagram1">
-        <EntityTypeShape EntityType="projetFinalModel.competence" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetFinalModel.skill" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetFinalModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetFinalModel.userSkill" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetFinalModel.xp" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="projetFinalModel.xpTable" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="projetFinalModel.FK__competenc__id_sk__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="projetFinalModel.FK__userSkill__id_sk__2A4B4B5E" ManuallyRouted="false" />
+      <Diagram DiagramId="7ff3fb9c7df54c09bc2fdb6c93a11957" Name="Diagram1">
+        <EntityTypeShape EntityType="projetFinalModel.C__MigrationHistory" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.AspNetRole" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.AspNetUserClaim" Width="1.875" PointX="10.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.AspNetUserLogin" Width="2" PointX="10.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.AspNetUser" Width="2.125" PointX="7.625" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.competence" Width="1.5" PointX="5.125" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.skill" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.sysdiagram" Width="1.5" PointX="10.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.userSkill" Width="1.5" PointX="5.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.xp" Width="1.5" PointX="2.875" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetFinalModel.xpTable" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="projetFinalModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="projetFinalModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="projetFinalModel.FK__competenc__id_sk__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="projetFinalModel.FK__skill__id_xptabl__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="projetFinalModel.FK__userSkill__id_sk__6FE99F9F" ManuallyRouted="false" />
         <AssociationConnector Association="projetFinalModel.FK__xp__id_xpTable__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="projetFinalModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

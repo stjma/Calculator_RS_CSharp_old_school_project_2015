@@ -12,12 +12,12 @@ namespace ProjetFinal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class competence
+    public partial class AspNetUserLogin
     {
-        public int id { get; set; }
-        public Nullable<int> id_skillName { get; set; }
-        public Nullable<int> xp { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual skill skill { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

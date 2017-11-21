@@ -13,10 +13,10 @@ namespace ProjetFinal.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class projetFinalEntities : DbContext
+    public partial class projetFinalEntities1 : DbContext
     {
-        public projetFinalEntities()
-            : base("name=projetFinalEntities")
+        public projetFinalEntities1()
+            : base("name=projetFinalEntities1")
         {
         }
     
@@ -25,6 +25,11 @@ namespace ProjetFinal.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<competence> competences { get; set; }
         public virtual DbSet<skill> skills { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

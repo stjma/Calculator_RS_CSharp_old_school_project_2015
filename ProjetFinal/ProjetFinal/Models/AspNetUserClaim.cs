@@ -12,12 +12,13 @@ namespace ProjetFinal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class competence
+    public partial class AspNetUserClaim
     {
-        public int id { get; set; }
-        public Nullable<int> id_skillName { get; set; }
-        public Nullable<int> xp { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual skill skill { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

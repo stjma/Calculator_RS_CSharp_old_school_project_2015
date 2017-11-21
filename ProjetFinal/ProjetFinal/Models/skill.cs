@@ -22,10 +22,12 @@ namespace ProjetFinal.Models
         }
     
         public int id { get; set; }
+        public Nullable<int> id_xptable { get; set; }
         public string nameSkill { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<competence> competences { get; set; }
+        public virtual xpTable xpTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<userSkill> userSkills { get; set; }
     }
