@@ -3,5 +3,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@{
+    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace };
+}
 
+
+@Ajax.ActionLink("Liste User", "AllUser", "Admin", null, ao, new { @class = "btn btn-primary btnadmin" })
+@Ajax.ActionLink("Ajouter User", "Register", "Account", new { id = "registerLink" }, ao, new { @class = "btn btn-primary btnadmin" })
+
+
+
+<div id="container1"></div>
+
+<div id="container2"></div>

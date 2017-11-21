@@ -23,9 +23,9 @@ namespace ProjetFinal.Controllers
             return PartialView(AspNetUser);
         }
 
-        public PartialViewResult DeleteUser()
+        public ActionResult DeleteUser()
         {
-            return PartialView();
+            return View();
         }
 
         public PartialViewResult AllRole()
