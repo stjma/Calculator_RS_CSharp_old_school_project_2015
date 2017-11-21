@@ -49,7 +49,7 @@ namespace ProjetFinal.Controllers
             List<xp> xp;
             if (idXpTable != null)
             {
-                xp = projetFinalEntities1.xps.ToList().FindAll(x => x.id_xpTable == 1);
+                xp = projetFinalEntities1.xps.ToList().FindAll(x => x.id_xpTable == idXpTable);
             }
             else
             {
