@@ -113,30 +113,38 @@ namespace ProjetFinal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RoleAddToUser(string UserName, string RoleName)
         {
-            var context = new Models.ApplicationDbContext();
-
-            if (context == null)
+            try
             {
-                throw new ArgumentNullException("context", "Context must not be null.");
+                var context = new Models.ApplicationDbContext();
+
+                if (context == null)
+                {
+                    throw new ArgumentNullException("context", "Context must not be null.");
+                }
+
+                ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                userManager.AddToRole(user.Id, RoleName);
+
+
+                ViewBag.Message = "Role created successfully !";
+
+                // Repopulate Dropdown Lists
+                var rolelist = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+                ViewBag.Roles = rolelist;
+                var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+                new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+                ViewBag.Users = userlist;
+
+                return View("Index");
             }
-
-            ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-
-            var userStore = new UserStore<ApplicationUser>(context);
-            var userManager = new UserManager<ApplicationUser>(userStore);
-            userManager.AddToRole(user.Id, RoleName);
-
-
-            ViewBag.Message = "Role created successfully !";
-
-            // Repopulate Dropdown Lists
-            var rolelist = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            ViewBag.Roles = rolelist;
-            var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
-            new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            ViewBag.Users = userlist;
-
-            return View("Index");
+            catch (Exception e)
+            {
+                return View("Index");
+            }
+           
         }
 
 

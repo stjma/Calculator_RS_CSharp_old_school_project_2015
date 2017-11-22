@@ -23,21 +23,6 @@ namespace ProjetFinal.Controllers
             return PartialView(AspNetUser);
         }
 
-        public ActionResult DeleteUser()
-        {
-            return View();
-        }
-
-        public PartialViewResult AllRole()
-        {
-            return PartialView();
-        }
-
-        public PartialViewResult DeleteRole()
-        {
-            return PartialView();
-        }
-
         public PartialViewResult AllXpTable()
         {
             List<xpTable> xpTable = projetFinalEntities1.xpTables.ToList();

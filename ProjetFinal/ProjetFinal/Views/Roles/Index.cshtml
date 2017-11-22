@@ -15,6 +15,7 @@
 }
 
 
+
 <div class="row col-sm-12 col-lg-12 col-md-12">
 
 
@@ -70,7 +71,7 @@
             </div>
             <div class="panel-body">
                 @using (Ajax.BeginForm("RoleAddToUser", "Roles", new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
-            {
+                {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
@@ -89,8 +90,8 @@
                 <h4>List Roles for a User</h4>
             </div>
             <div class="panel-body">
-                @using (Html.BeginForm("GetRoles", "Roles"))
-            {
+                @using (Html.BeginForm("GetRoles", "Roles", new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace, OnSuccess = "jsListePanier" }))
+                {
                     @Html.AntiForgeryToken()
                     <p>
                         User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
@@ -119,7 +120,7 @@
             </div>
             <div class="panel-body">
                 @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
-            {
+                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
@@ -127,7 +128,7 @@
                     <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
                     <p><input type="submit" value="Delete this user from Role" class="btn-primary" /></p>
 
-                }
+                 }
             </div> <!-- End Panel Body-->
         </div> <!-- End Panel -->
 
@@ -146,12 +147,24 @@
             url: '@Url.Action("index", "Roles")',
             type: 'GET',
             dataType: 'html',
-            success: function (result) {
-                $('#container1').html(result);
-            }
+            //success: function (result) {
+            //    $('#container1').html(result);
+            //}
         });
     }
 
+    function changePage() {
+        $.ajax({
+            window.alert("sometext");
+            url: '@Url.Action("index", "Roles")',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $('#container2').html(result);
+                window.alert("sometext");
+            }
+        });
+    }
 
     function myFunction() {
         if (confirm("Confirm message")) {

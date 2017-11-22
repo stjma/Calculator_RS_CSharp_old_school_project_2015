@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+
+    @{
+        AjaxOptions aoLayout = new AjaxOptions() { UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace };
+    }
+
+</head>
+<body>
+    <div class="navbar navbar-inverse ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Application name", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                    <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+                    <li>
+                        @Ajax.ActionLink("Liste User", "AllUser", "Admin", null, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+
+                    <li>
+                        @Ajax.ActionLink("Role", "index", "Roles", null, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+
+                    <li>
+                        @Ajax.ActionLink("Ajouter User", "Register", "Account", new { id = "registerLink" }, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+
+                    <li>
+                        @Ajax.ActionLink("Afficher skill", "AllSkill", "Admin", null, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+                    <li>
+                        @Ajax.ActionLink("Afficher tous les competence", "AllCompetence", "Admin", null, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+
+                    <li>
+                        @Ajax.ActionLink("Afficher table", "AllXpTable", "Admin", null, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+
+                    <li>
+                        @Ajax.ActionLink("Afficher tous les xps", "AllXp", "Admin", null, aoLayout, new { @class = "btn btn-primary btnadmin" })
+                    </li>
+
+                    <li>@Html.Partial("_LoginPartial")</li>
+                </ul>
+               
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
