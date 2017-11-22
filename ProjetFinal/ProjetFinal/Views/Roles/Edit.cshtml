@@ -3,11 +3,15 @@
     ViewBag.Title = "Edit Roles";
 }
 
+@{
+    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace };
+}
+
 <h2>Edit Role</h2>
 
-@Html.ActionLink("Return to Role Manager", "Index")
+@Ajax.ActionLink("Back", "index", "Roles", null, ao, new { @class = "btn btn-primary btnadmin" })
 <hr />
-@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
+@using (Ajax.BeginForm("Edit", "Roles", new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
