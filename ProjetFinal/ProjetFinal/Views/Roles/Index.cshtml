@@ -8,6 +8,13 @@
     <br />
 </div>
 
+@{
+    AjaxOptions ao = new AjaxOptions() { HttpMethod = "GET", AllowCache = false, UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace, OnSuccess = "jsListePanier", Confirm = "Voulez-vous supprimer ce role?" };
+
+    AjaxOptions ao1 = new AjaxOptions() { HttpMethod = "GET", AllowCache = false, UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace};
+}
+
+
 <div class="row col-sm-12 col-lg-12 col-md-12">
 
 
@@ -19,22 +26,19 @@
             <div class="panel-body">
                 <table class="table table-striped table-hover col-sm-6 col-lg-6 col-md-6 ">
                     @foreach (var role in ViewBag.Roles)
-                    {
-                        <tr>
-                          
-                            <td class="col-sm-1 col-lg-5 col-md-5">
+                    {                       
+                        <tr>                    
+                            <td class="col-sm-1 col-lg-7 col-md-7">
                                 <strong>@role.Text </strong>
                             </td>
-                            <td class="col-sm-1 col-lg-1 col-md-1">
-                                @Ajax.ActionLink("Supprimer", "Delete", "Roles", new { RoleName = @role.Text }, new AjaxOptions() { HttpMethod = "GET", AllowCache = false, UpdateTargetId = "panierInfoListe", InsertionMode = InsertionMode.Replace, OnSuccess = "jsListePanier", Confirm = "Voulez-vous supprimer ce role?" })
-                                @Html.ActionLink("Edit", "Edit", new { roleName = @role.Text })
+                            <td class="col-sm-1 col-lg-5 col-md-5">
+                                @Ajax.ActionLink("Supprimer", "Delete", "Roles", new { RoleName = @role.Text }, ao, new { @class = "btn btn-primary btnadmin" }) |
 
-
-
-                                @*Ajax.ActionLink("Supprimer au panier", "Delete", "Roles", new { RoleName = @role.Text }, new AjaxOptions() { HttpMethod = "GET", AllowCache = false, UpdateTargetId = "panierInfoListe", InsertionMode = InsertionMode.Replace, OnSuccess = "jsListePanier" }, new { onclick = "return confirm('Are you sure you want to click this link?')" })|*@
+                                @Ajax.ActionLink("Edit", "Edit", "Roles",new { roleName = @role.Text } , ao1, new { @class = "btn btn-primary btnadmin" })
                             </td>
                         </tr>
-                    }
+                       
+                     }
                 </table>
             </div> <!-- End Panel Body-->
         </div> <!-- End Panel -->

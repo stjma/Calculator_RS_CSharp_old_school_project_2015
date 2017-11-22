@@ -18,9 +18,10 @@ namespace ProjetFinal.Controllers
             var context = new ApplicationDbContext();
 
             var rolelist = context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
-            new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name}).ToList();
             ViewBag.Roles = rolelist;
 
+         
             var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
             new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
             ViewBag.Users = userlist;
@@ -32,9 +33,9 @@ namespace ProjetFinal.Controllers
 
 
         // GET: /Roles/Create
-        public ActionResult Create()
+        public PartialViewResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -71,7 +72,7 @@ namespace ProjetFinal.Controllers
             return RedirectToAction("index");
         }
 
-        //
+
         // GET: /Roles/Edit/5
         public ActionResult Edit(string roleName)
         {
@@ -81,14 +82,18 @@ namespace ProjetFinal.Controllers
             return View(thisRole);
         }
 
-        //
+
+
         // POST: /Roles/Edit/5
+
+        //Microsoft.AspNet.Identity.EntityFramework.IdentityRole role
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Microsoft.AspNet.Identity.EntityFramework.IdentityRole role)
         {
             try
             {
+
                 var context = new Models.ApplicationDbContext();
                 context.Entry(role).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
@@ -97,8 +102,9 @@ namespace ProjetFinal.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("index");
             }
+
         }
 
 

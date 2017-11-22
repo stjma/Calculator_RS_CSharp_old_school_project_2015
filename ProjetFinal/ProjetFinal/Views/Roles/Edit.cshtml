@@ -7,7 +7,7 @@
 
 @Html.ActionLink("Return to Role Manager", "Index")
 <hr />
-@using (Html.BeginForm())
+@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
