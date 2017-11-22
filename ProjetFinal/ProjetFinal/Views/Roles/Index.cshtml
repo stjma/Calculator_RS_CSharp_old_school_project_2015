@@ -21,12 +21,17 @@
                     @foreach (var role in ViewBag.Roles)
                     {
                         <tr>
+                          
                             <td class="col-sm-1 col-lg-5 col-md-5">
                                 <strong>@role.Text </strong>
                             </td>
                             <td class="col-sm-1 col-lg-1 col-md-1">
-                                <span onclick="return confirm('Are you sure to delete?')"><a href="/Roles/Delete?RoleName=@role.Text" class="delLink" style="color:red;">Delete</a></span> |
+                                @Ajax.ActionLink("Supprimer", "Delete", "Roles", new { RoleName = @role.Text }, new AjaxOptions() { HttpMethod = "GET", AllowCache = false, UpdateTargetId = "panierInfoListe", InsertionMode = InsertionMode.Replace, OnSuccess = "jsListePanier", Confirm = "Voulez-vous supprimer ce role?" })
                                 @Html.ActionLink("Edit", "Edit", new { roleName = @role.Text })
+
+
+
+                                @*Ajax.ActionLink("Supprimer au panier", "Delete", "Roles", new { RoleName = @role.Text }, new AjaxOptions() { HttpMethod = "GET", AllowCache = false, UpdateTargetId = "panierInfoListe", InsertionMode = InsertionMode.Replace, OnSuccess = "jsListePanier" }, new { onclick = "return confirm('Are you sure you want to click this link?')" })|*@
                             </td>
                         </tr>
                     }
@@ -40,7 +45,7 @@
             </div>
             <div class="panel-body">
                 @using (Ajax.BeginForm("Create", "Roles", new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
-            {
+                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
@@ -60,7 +65,7 @@
                 <h4>Add a Role to a User</h4>
             </div>
             <div class="panel-body">
-                @using (Html.BeginForm("RoleAddToUser", "Roles"))
+                @using (Ajax.BeginForm("RoleAddToUser", "Roles", new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
             {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
@@ -69,7 +74,7 @@
                     <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
                     <p><input type="submit" value="Save" class="btn-primary" /></p>
 
-                
+
                 }
             </div> <!-- End Panel Body-->
         </div> <!-- End Panel -->
@@ -130,4 +135,26 @@
     @ViewBag.Message
 </div>
 
+
+<script>
+    function jsListePanier() {
+        $.ajax({
+            url: '@Url.Action("index", "Roles")',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $('#container1').html(result);
+            }
+        });
+    }
+
+
+    function myFunction() {
+        if (confirm("Confirm message")) {
+            // do stuff
+        } else {
+            return false;
+        }
+    }
+</script>
 

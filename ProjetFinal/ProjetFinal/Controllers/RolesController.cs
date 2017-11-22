@@ -57,7 +57,7 @@ namespace ProjetFinal.Controllers
             catch
             {
                 //return View();
-                return View();
+                return RedirectToAction("index");
             }
         }
 
@@ -68,7 +68,7 @@ namespace ProjetFinal.Controllers
             var thisRole = context.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             context.Roles.Remove(thisRole);
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("index");
         }
 
         //
