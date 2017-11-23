@@ -98,7 +98,7 @@ namespace ProjetFinal.Controllers
                     lvl = Int32.Parse(formCollection["lvl"]),
                     xps = Int32.Parse(formCollection["xps"]),
                     dif = Int32.Parse(formCollection["dif"])
-                };    
+                };
             }
             projetFinalEntities1.Entry(xp).State = System.Data.Entity.EntityState.Modified; projetFinalEntities1.SaveChanges();
             return RedirectToAction("AllXp");  
@@ -216,7 +216,7 @@ namespace ProjetFinal.Controllers
                 competence = new competence()
                 {
                     id = Int32.Parse(formCollection["id"]),
-                    id_skillName = projetFinalEntities1.skills.ToList().Find(x => x.nameSkill == formCollection["nameSkill"]).id,
+                    id_skillName = projetFinalEntities1.skills.ToList().Find(x => x.nameSkill == formCollection["else"]).id,
                     name = formCollection["name"],
                     xp = Int32.Parse(formCollection["xp"])
                 };
