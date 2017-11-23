@@ -5,62 +5,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_AdminOption")
+
 <h2>AllXpTable</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div id="ParialXpTable">
+    <p>
+        @Ajax.ActionLink("Ajouter table", "AddXpTable", "Admin", new AjaxOptions() { UpdateTargetId = "ParialXpTable", InsertionMode = InsertionMode.Replace })
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id@item.name">Modifier</button>
-                @Html.ActionLink("Details", "AllXp", new { idXpTable = item.id }, new { @class = "btn btn-info" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-info" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th></th>
         </tr>
 
-        <tr>
-            <td id=@item.id@item.name class="collapse">
-                @using (Html.BeginForm("Update", "Home", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id@item.name">Modifier</button>
+                    @Html.ActionLink("Details", "AllXp", new { idXpTable = item.id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
 
-                    <div class="form-horizontal">
+            <tr id=@item.id@item.name class="collapse">
+                <td colspan="2">
+                    @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
 
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                        @Html.Hidden(name: "id", value: @item.id)
+                            @Html.Hidden(name: "id", value: @item.id)
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => item.name, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBox(name: "name", value: @item.name)
+                            <div class="form-group">
+                                @Html.LabelFor(model => item.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox(name: "name", value: @item.name)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button class="btn btn-default">Modifier</button>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <button class="btn btn-default">Modifier</button>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </td>
-        </tr>
-    }
+                    }
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+
+</div>
