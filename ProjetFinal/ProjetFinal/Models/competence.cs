@@ -16,8 +16,8 @@ namespace ProjetFinal.Models
     {
         public int id { get; set; }
         public Nullable<int> id_skillName { get; set; }
-        public Nullable<int> xp { get; set; }
         public string name { get; set; }
+        public Nullable<int> xp { get; set; }
     
         public virtual skill skill { get; set; }
     }

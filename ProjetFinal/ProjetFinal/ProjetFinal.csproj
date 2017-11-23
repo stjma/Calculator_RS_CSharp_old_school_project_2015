@@ -206,54 +206,54 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\competence.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbProjetFinal.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbProjetFinal.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbProjetFinal.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dbProjetFinal.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbProjetFinal.edmx</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProjetFinal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjetFinal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjetFinal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjetFinal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjetFinal.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\skill.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\userSkill.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\xp.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\xpTable.cs">
-      <DependentUpon>dbProjetFinal.tt</DependentUpon>
+      <DependentUpon>ProjetFinal.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -267,15 +267,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\dbProjetFinal.Context.tt">
+    <Content Include="Models\ProjetFinal.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbProjetFinal.edmx</DependentUpon>
-      <LastGenOutput>dbProjetFinal.Context.cs</LastGenOutput>
+      <DependentUpon>ProjetFinal.edmx</DependentUpon>
+      <LastGenOutput>ProjetFinal.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\dbProjetFinal.tt">
+    <Content Include="Models\ProjetFinal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbProjetFinal.edmx</DependentUpon>
-      <LastGenOutput>dbProjetFinal.cs</LastGenOutput>
+      <DependentUpon>ProjetFinal.edmx</DependentUpon>
+      <LastGenOutput>ProjetFinal.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -290,12 +290,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\dbProjetFinal.edmx">
+    <EntityDeploy Include="Models\ProjetFinal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbProjetFinal.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProjetFinal.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\dbProjetFinal.edmx.diagram">
-      <DependentUpon>dbProjetFinal.edmx</DependentUpon>
+    <Content Include="Models\ProjetFinal.edmx.diagram">
+      <DependentUpon>ProjetFinal.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />

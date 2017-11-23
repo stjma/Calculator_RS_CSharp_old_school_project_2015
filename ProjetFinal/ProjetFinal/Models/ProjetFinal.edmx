@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="projetFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="projetFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -70,16 +70,16 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_skillName" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="70" />
           <Property Name="xp" Type="int" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="skill">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_xptable" Type="int" />
           <Property Name="nameSkill" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -97,7 +97,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_skill" Type="int" />
           <Property Name="id_user" Type="nvarchar" MaxLength="256" />
           <Property Name="lvl" Type="int" />
@@ -117,10 +117,10 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__competenc__id_sk__656C112C">
+        <Association Name="FK__competenc__id_sk__2B0A656D">
           <End Role="skill" Type="Self.skill" Multiplicity="0..1" />
           <End Role="competence" Type="Self.competence" Multiplicity="*" />
           <ReferentialConstraint>
@@ -132,7 +132,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__skill__id_xptabl__5FB337D6">
+        <Association Name="FK__skill__id_xptabl__282DF8C2">
           <End Role="xpTable" Type="Self.xpTable" Multiplicity="0..1" />
           <End Role="skill" Type="Self.skill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userSkill__id_sk__6FE99F9F">
+        <Association Name="FK__userSkill__id_sk__2DE6D218">
           <End Role="skill" Type="Self.skill" Multiplicity="0..1" />
           <End Role="userSkill" Type="Self.userSkill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,10 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__userSkill__id_us__70DDC3D8" />-->
-        <Association Name="FK__xp__id_xpTable__3A81B327">
+        <Association Name="FK__xp__id_xpTable__25518C17">
           <End Role="xpTable" Type="Self.xpTable" Multiplicity="0..1" />
           <End Role="xp" Type="Self.xp" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,19 +237,19 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <EntitySet Name="userSkill" EntityType="Self.userSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="xp" EntityType="Self.xp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="xpTable" EntityType="Self.xpTable" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__competenc__id_sk__656C112C" Association="Self.FK__competenc__id_sk__656C112C">
+          <AssociationSet Name="FK__competenc__id_sk__2B0A656D" Association="Self.FK__competenc__id_sk__2B0A656D">
             <End Role="skill" EntitySet="skill" />
             <End Role="competence" EntitySet="competence" />
           </AssociationSet>
-          <AssociationSet Name="FK__skill__id_xptabl__5FB337D6" Association="Self.FK__skill__id_xptabl__5FB337D6">
+          <AssociationSet Name="FK__skill__id_xptabl__282DF8C2" Association="Self.FK__skill__id_xptabl__282DF8C2">
             <End Role="xpTable" EntitySet="xpTable" />
             <End Role="skill" EntitySet="skill" />
           </AssociationSet>
-          <AssociationSet Name="FK__userSkill__id_sk__6FE99F9F" Association="Self.FK__userSkill__id_sk__6FE99F9F">
+          <AssociationSet Name="FK__userSkill__id_sk__2DE6D218" Association="Self.FK__userSkill__id_sk__2DE6D218">
             <End Role="skill" EntitySet="skill" />
             <End Role="userSkill" EntitySet="userSkill" />
           </AssociationSet>
-          <AssociationSet Name="FK__xp__id_xpTable__3A81B327" Association="Self.FK__xp__id_xpTable__3A81B327">
+          <AssociationSet Name="FK__xp__id_xpTable__25518C17" Association="Self.FK__xp__id_xpTable__25518C17">
             <End Role="xpTable" EntitySet="xpTable" />
             <End Role="xp" EntitySet="xp" />
           </AssociationSet>
@@ -273,7 +270,8 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="projetFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -340,22 +338,22 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_skillName" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="xp" Type="Int32" />
-          <NavigationProperty Name="skill" Relationship="Self.FK__competenc__id_sk__656C112C" FromRole="competence" ToRole="skill" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="skill" Relationship="Self.FK__competenc__id_sk__2B0A656D" FromRole="competence" ToRole="skill" />
         </EntityType>
         <EntityType Name="skill">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_xptable" Type="Int32" />
           <Property Name="nameSkill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="competences" Relationship="Self.FK__competenc__id_sk__656C112C" FromRole="skill" ToRole="competence" />
-          <NavigationProperty Name="xpTable" Relationship="Self.FK__skill__id_xptabl__5FB337D6" FromRole="skill" ToRole="xpTable" />
-          <NavigationProperty Name="userSkills" Relationship="Self.FK__userSkill__id_sk__6FE99F9F" FromRole="skill" ToRole="userSkill" />
+          <NavigationProperty Name="competences" Relationship="Self.FK__competenc__id_sk__2B0A656D" FromRole="skill" ToRole="competence" />
+          <NavigationProperty Name="xpTable" Relationship="Self.FK__skill__id_xptabl__282DF8C2" FromRole="skill" ToRole="xpTable" />
+          <NavigationProperty Name="userSkills" Relationship="Self.FK__userSkill__id_sk__2DE6D218" FromRole="skill" ToRole="userSkill" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -371,12 +369,12 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_skill" Type="Int32" />
           <Property Name="id_user" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="lvl" Type="Int32" />
           <Property Name="xp" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="skill" Relationship="Self.FK__userSkill__id_sk__6FE99F9F" FromRole="userSkill" ToRole="skill" />
+          <NavigationProperty Name="skill" Relationship="Self.FK__userSkill__id_sk__2DE6D218" FromRole="userSkill" ToRole="skill" />
         </EntityType>
         <EntityType Name="xp">
           <Key>
@@ -387,16 +385,16 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <Property Name="lvl" Type="Int32" />
           <Property Name="xps" Type="Int32" />
           <Property Name="dif" Type="Int32" />
-          <NavigationProperty Name="xpTable" Relationship="Self.FK__xp__id_xpTable__3A81B327" FromRole="xp" ToRole="xpTable" />
+          <NavigationProperty Name="xpTable" Relationship="Self.FK__xp__id_xpTable__25518C17" FromRole="xp" ToRole="xpTable" />
         </EntityType>
         <EntityType Name="xpTable">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="skills" Relationship="Self.FK__skill__id_xptabl__5FB337D6" FromRole="xpTable" ToRole="skill" />
-          <NavigationProperty Name="xps" Relationship="Self.FK__xp__id_xpTable__3A81B327" FromRole="xpTable" ToRole="xp" />
+          <NavigationProperty Name="skills" Relationship="Self.FK__skill__id_xptabl__282DF8C2" FromRole="xpTable" ToRole="skill" />
+          <NavigationProperty Name="xps" Relationship="Self.FK__xp__id_xpTable__25518C17" FromRole="xpTable" ToRole="xp" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -426,7 +424,7 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__competenc__id_sk__656C112C">
+        <Association Name="FK__competenc__id_sk__2B0A656D">
           <End Role="skill" Type="Self.skill" Multiplicity="0..1" />
           <End Role="competence" Type="Self.competence" Multiplicity="*" />
           <ReferentialConstraint>
@@ -438,7 +436,7 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__skill__id_xptabl__5FB337D6">
+        <Association Name="FK__skill__id_xptabl__282DF8C2">
           <End Role="xpTable" Type="Self.xpTable" Multiplicity="0..1" />
           <End Role="skill" Type="Self.skill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -450,7 +448,7 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__userSkill__id_sk__6FE99F9F">
+        <Association Name="FK__userSkill__id_sk__2DE6D218">
           <End Role="skill" Type="Self.skill" Multiplicity="0..1" />
           <End Role="userSkill" Type="Self.userSkill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -462,7 +460,7 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__xp__id_xpTable__3A81B327">
+        <Association Name="FK__xp__id_xpTable__25518C17">
           <End Role="xpTable" Type="Self.xpTable" Multiplicity="0..1" />
           <End Role="xp" Type="Self.xp" Multiplicity="*" />
           <ReferentialConstraint>
@@ -498,19 +496,19 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK__competenc__id_sk__656C112C" Association="Self.FK__competenc__id_sk__656C112C">
+          <AssociationSet Name="FK__competenc__id_sk__2B0A656D" Association="Self.FK__competenc__id_sk__2B0A656D">
             <End Role="skill" EntitySet="skills" />
             <End Role="competence" EntitySet="competences" />
           </AssociationSet>
-          <AssociationSet Name="FK__skill__id_xptabl__5FB337D6" Association="Self.FK__skill__id_xptabl__5FB337D6">
+          <AssociationSet Name="FK__skill__id_xptabl__282DF8C2" Association="Self.FK__skill__id_xptabl__282DF8C2">
             <End Role="xpTable" EntitySet="xpTables" />
             <End Role="skill" EntitySet="skills" />
           </AssociationSet>
-          <AssociationSet Name="FK__userSkill__id_sk__6FE99F9F" Association="Self.FK__userSkill__id_sk__6FE99F9F">
+          <AssociationSet Name="FK__userSkill__id_sk__2DE6D218" Association="Self.FK__userSkill__id_sk__2DE6D218">
             <End Role="skill" EntitySet="skills" />
             <End Role="userSkill" EntitySet="userSkills" />
           </AssociationSet>
-          <AssociationSet Name="FK__xp__id_xpTable__3A81B327" Association="Self.FK__xp__id_xpTable__3A81B327">
+          <AssociationSet Name="FK__xp__id_xpTable__25518C17" Association="Self.FK__xp__id_xpTable__25518C17">
             <End Role="xpTable" EntitySet="xpTables" />
             <End Role="xp" EntitySet="xps" />
           </AssociationSet>
@@ -583,9 +581,9 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <EntitySetMapping Name="competences">
             <EntityTypeMapping TypeName="projetFinalModel.competence">
               <MappingFragment StoreEntitySet="competence">
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_skillName" ColumnName="id_skillName" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="xp" ColumnName="xp" />
               </MappingFragment>
             </EntityTypeMapping>

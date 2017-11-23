@@ -50,7 +50,12 @@ namespace ProjetFinal.Controllers
       
         [HttpPost]
         public ActionResult AddXpTable(FormCollection formCollection)
-        {
+        {          
+            projetFinalEntities1.xpTables.Add(new xpTable()
+            {
+                name = formCollection["name"]
+            });
+            projetFinalEntities1.SaveChanges();
             return RedirectToAction("AllXpTable");
         }
 
@@ -116,12 +121,21 @@ namespace ProjetFinal.Controllers
 
         public PartialViewResult AddSkill()
         {
+           
             return PartialView();
         }
 
         [HttpPost]
         public ActionResult AddSkill(FormCollection formCollection)
         {
+            projetFinalEntities1.skills.Add(
+                new skill()
+                {
+                    id_xptable = projetFinalEntities1.xpTables.ToList().Find(x=>x.name == formCollection["name"]).id,
+                    nameSkill = formCollection["nameSkill"]
+                });
+            projetFinalEntities1.SaveChanges();
+                      
             return RedirectToAction("AllSkill");
         }
        
@@ -160,6 +174,13 @@ namespace ProjetFinal.Controllers
         [HttpPost]
         public ActionResult AddCompetence(FormCollection formCollection)
         {
+            projetFinalEntities1.competences.Add(new competence()
+            {
+                id_skillName = projetFinalEntities1.skills.ToList().Find(x=>x.nameSkill == formCollection["nameSkill"]).id,
+                name = formCollection["name"],
+                xp =Int32.Parse(formCollection["xp"])
+            });
+            projetFinalEntities1.SaveChanges();
             return RedirectToAction("AllCompetence");
         }
     }
