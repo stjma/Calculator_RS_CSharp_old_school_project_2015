@@ -4,14 +4,16 @@
 }
 
 @{
-    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace };
+    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "partielAdmin", InsertionMode = InsertionMode.Replace };
 }
 
 <h2>Edit Role</h2>
+@Html.ActionLink("Back", "index", "Roles")
 
-@Ajax.ActionLink("Back", "index", "Roles", null, ao, new { @class = "btn btn-primary btnadmin" })
+@*@Ajax.ActionLink("Back", "index", "Roles", null, ao, new { @class = "btn btn-primary btnadmin" })*@
 <hr />
-@using (Ajax.BeginForm("Edit", "Roles", new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace }))
+@* new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "partielAdmin", InsertionMode = InsertionMode.Replace } *@
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)

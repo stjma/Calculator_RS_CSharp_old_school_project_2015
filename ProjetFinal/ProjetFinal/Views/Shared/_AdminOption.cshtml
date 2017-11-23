@@ -1,0 +1,18 @@
+﻿@{
+    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "partielAdmin", InsertionMode = InsertionMode.Replace };
+}
+
+
+
+@Html.ActionLink("Utilisateur", "index", "Roles", null,new { @class = "btn btn-primary btnadmin" })
+
+
+
+
+@Html.ActionLink("Afficher skill", "AllSkill", "Admin", null, new { @class = "btn btn-primary btnadmin" })
+@Html.ActionLink("Afficher tous les competence", "AllCompetence", "Admin", null, new { @class = "btn btn-primary btnadmin" })
+
+
+@Html.ActionLink(linkText:"Afficher table", actionName:"AllXpTable",controllerName: "Admin",routeValues:null, htmlAttributes:new { @class = "btn btn-primary btnadmin" })
+@Html.ActionLink(linkText: "Afficher tous les xps", actionName:"AllXp", controllerName:"Admin", routeValues:null, htmlAttributes:new { @class = "btn btn-primary btnadmin" })
+

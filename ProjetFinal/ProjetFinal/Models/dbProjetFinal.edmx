@@ -73,6 +73,7 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="id_skillName" Type="int" />
           <Property Name="xp" Type="int" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="skill">
           <Key>
@@ -343,6 +344,7 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <Property Name="id_skillName" Type="Int32" />
           <Property Name="xp" Type="Int32" />
           <NavigationProperty Name="skill" Relationship="Self.FK__competenc__id_sk__656C112C" FromRole="competence" ToRole="skill" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="skill">
           <Key>
@@ -581,6 +583,7 @@ warning 6035: The relationship 'FK__userSkill__id_us__70DDC3D8' has columns that
           <EntitySetMapping Name="competences">
             <EntityTypeMapping TypeName="projetFinalModel.competence">
               <MappingFragment StoreEntitySet="competence">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_skillName" ColumnName="id_skillName" />
                 <ScalarProperty Name="xp" ColumnName="xp" />

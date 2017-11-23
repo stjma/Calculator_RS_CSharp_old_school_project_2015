@@ -352,15 +352,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <Content Include="Views\Admin\AllXpTable.cshtml" />
-    <Content Include="Views\Admin\AllXp.cshtml" />
     <Content Include="Views\Admin\AllUser.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminOption.cshtml" />
+    <Content Include="Views\Admin\AllXpTable.cshtml" />
+    <Content Include="Views\Admin\AllXp.cshtml" />
     <Content Include="Views\Admin\AllSkill.cshtml" />
     <Content Include="Views\Admin\AllCompetence.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

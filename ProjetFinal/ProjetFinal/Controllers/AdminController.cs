@@ -1,6 +1,7 @@
 ﻿using ProjetFinal.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,9 +13,9 @@ namespace ProjetFinal.Controllers
         private projetFinalEntities1 projetFinalEntities1 = new projetFinalEntities1();
 
         // GET: Admin
-        public ActionResult Index()
+        public PartialViewResult Index()
         {
-            return View();
+            return PartialView("Index");
         }
 
         public PartialViewResult AllUser()
@@ -23,10 +24,16 @@ namespace ProjetFinal.Controllers
             return PartialView(AspNetUser);
         }
 
-        public PartialViewResult AllXpTable()
+        public ActionResult AllXpTable()
         {
             List<xpTable> xpTable = projetFinalEntities1.xpTables.ToList();
-            return PartialView(xpTable);
+            return View(xpTable);
+        }
+
+        [HttpPost]
+        public ActionResult EditXpTable(FormCollection formCollection)
+        {
+            return RedirectToAction("Index");
         }
 
         public PartialViewResult AllXp(int? idXpTable)
@@ -42,6 +49,15 @@ namespace ProjetFinal.Controllers
             }
             
             return PartialView(xp);
+        }
+
+        [HttpPost]
+        public ActionResult EditXp(FormCollection formCollection)
+        {
+            //projetFinalEntities1.xps.AddOrUpdate(new xpTable() { id = Int32.Parse(formCollection["id"]), name = formCollection["name"] });
+
+            return RedirectToAction("index","Roles");
+            //return View(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
 
         public ActionResult DeleteXpTable(int idXpTable)

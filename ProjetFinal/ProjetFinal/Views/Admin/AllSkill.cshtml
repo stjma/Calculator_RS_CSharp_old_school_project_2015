@@ -1,4 +1,11 @@
 ﻿@model IEnumerable<ProjetFinal.Models.skill>
+@using ProjetFinal.Models;
+@{
+    ViewBag.Title = "AllSkill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_AdminOption")
+<h2>AllSkill</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -14,20 +21,78 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nameSkill)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.xpTable.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nameSkill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.xpTable.name)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.nameSkill@item.id">Modifier</button> 
+                @Html.ActionLink("Details", "AllCompetence", new { idSkill = item.id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+
+        <tr>
+            <td id=@item.nameSkill@item.id class="collapse" colspan="5">
+                @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        @Html.Hidden(name: "id", value: @item.id)
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.nameSkill, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox(name: "nameSkill", value: @item.nameSkill)
+                            </div>
+                        </div>
+
+                       
+                        @{
+                            List<SelectListItem> listName = new List<SelectListItem>();
+
+                            projetFinalEntities1 projetFinalEntities = new projetFinalEntities1();
+
+
+                            foreach (xpTable xpTable in projetFinalEntities.xpTables.ToList())
+                            {
+                                if (xpTable.name != item.xpTable.name)
+                                {
+                                    listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
+                                }
+                            }
+
+                        }
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => item.xpTable.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("nameSkill", listName, item.xpTable.name)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-default">Modifier</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </td>
+        </tr>
+    }
 
 </table>

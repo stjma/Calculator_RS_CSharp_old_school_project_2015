@@ -1,16 +1,10 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "partielAdmin", InsertionMode = InsertionMode.Replace };
 }
-
-@{
-    AjaxOptions ao = new AjaxOptions() { UpdateTargetId = "container1", InsertionMode = InsertionMode.Replace };
-}
-
 
 @Ajax.ActionLink("Liste User", "AllUser", "Admin", null, ao, new { @class = "btn btn-primary btnadmin" })
 
-@Ajax.ActionLink("Role", "index", "Roles", null, ao, new { @class = "btn btn-primary btnadmin" })
+@Html.ActionLink("Role", "index", "Roles", new { @class = "btn btn-primary btnadmin" })
 
 @Ajax.ActionLink("Ajouter User", "Register", "Account", new { id = "registerLink" }, ao, new { @class = "btn btn-primary btnadmin" })
 
@@ -19,7 +13,3 @@
 
 @Ajax.ActionLink("Afficher table", "AllXpTable", "Admin", null, ao, new { @class = "btn btn-primary btnadmin" })
 @Ajax.ActionLink("Afficher tous les xps", "AllXp", "Admin", null, ao, new { @class = "btn btn-primary btnadmin" })
-
-<div id="container1"></div>
-
-<div id="container2"></div>
