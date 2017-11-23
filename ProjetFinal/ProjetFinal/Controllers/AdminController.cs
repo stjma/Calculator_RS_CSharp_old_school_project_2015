@@ -98,6 +98,14 @@ namespace ProjetFinal.Controllers
         [HttpPost]
         public ActionResult AddXp(FormCollection formCollection)
         {
+            projetFinalEntities1.xps.Add(new xp()
+            {
+                id_xpTable = projetFinalEntities1.xpTables.ToList().Find(x => x.name == formCollection["table"]).id,
+                lvl = Int32.Parse(formCollection["lvl"]),
+                xps = Int32.Parse(formCollection["xps"]),
+                dif = Int32.Parse(formCollection["dif"])
+            });
+            projetFinalEntities1.SaveChanges();
             return RedirectToAction("AllXp");
         }
 
