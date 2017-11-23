@@ -33,15 +33,10 @@ namespace ProjetFinal.Controllers
         [HttpPost]
         public ActionResult EditXpTable(FormCollection formCollection)
         {
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult DeleteXpTable(int idXpTable)
-        {
-            xpTable xpTable = projetFinalEntities1.xpTables.ToList().Find(x => x.id == idXpTable);
-            projetFinalEntities1.xpTables.Remove(xpTable);
-            return RedirectToAction("index");
-        }
+            projetFinalEntities1.Entry(new xpTable() {id = Int32.Parse(formCollection["id"]), name = formCollection["name"] }).State = System.Data.Entity.EntityState.Modified;
+            projetFinalEntities1.SaveChanges();
+            return RedirectToAction("AllXpTable");
+        }       
 
         public PartialViewResult AddXpTable()
         {
@@ -87,7 +82,8 @@ namespace ProjetFinal.Controllers
         {
             xp xp = projetFinalEntities1.xps.ToList().Find(x => x.id == idXp);
             projetFinalEntities1.xps.Remove(xp);
-            return RedirectToAction("index");
+            projetFinalEntities1.SaveChanges();
+            return RedirectToAction("Allxp");
         }
 
         public PartialViewResult AddXp()
@@ -118,13 +114,6 @@ namespace ProjetFinal.Controllers
         public ActionResult EditSkill()
         {
             return View();
-        }
-
-        public ActionResult DeleteSkill(int idSkill)
-        {
-            skill skill = projetFinalEntities1.skills.ToList().Find(x => x.id == idSkill);
-            projetFinalEntities1.skills.Remove(skill);
-            return RedirectToAction("index");
         }
 
         public PartialViewResult AddSkill()
@@ -166,13 +155,6 @@ namespace ProjetFinal.Controllers
         {
             return View();
         } 
-
-        public ActionResult DeleteCompetence(int idCompentence)
-        {
-            competence competence = projetFinalEntities1.competences.ToList().Find(x => x.id == idCompentence);
-            projetFinalEntities1.competences.Remove(competence);
-            return RedirectToAction("index");
-        }
 
         public PartialViewResult AddCompetence()
         {

@@ -27,14 +27,13 @@
                 </td>
                 <td>
                     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id@item.name">Modifier</button>
-                    @Html.ActionLink("Details", "AllXp", new { idXpTable = item.id }, new { @class = "btn btn-info" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Details", "AllXp", null, new { @class = "btn btn-info" })
                 </td>
             </tr>
 
             <tr id=@item.id@item.name class="collapse">
                 <td colspan="2">
-                    @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+                    @using (Html.BeginForm("EditXpTable", "Admin", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
