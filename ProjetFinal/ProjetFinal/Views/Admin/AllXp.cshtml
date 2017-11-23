@@ -53,7 +53,7 @@
 
             <tr id=@item.lvl@item.xps class="collapse">
                 <td  colspan="5">
-                    @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+                    @using (Html.BeginForm("EditXp", "Admin", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
@@ -97,20 +97,25 @@
                                 {
                                     if (xpTable.name != item.xpTable.name)
                                     {
-                                        listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
+                                    listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
                                     }
                                 }
 
-                     }
+                                string value = item.xpTable.name;
+                            }
 
+                           
+                            
+                            
                             <div class="form-group">
                                 @Html.LabelFor(model => item.xpTable.name, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.DropDownList("table", listName, item.xpTable.name)
+                                    @Html.DropDownList("table", listName, value)
                                 </div>
                             </div>
-
-
+                            @Html.Hidden(name: "else", value: @item.xpTable.name)
+                            
+                           
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button class="btn btn-default">Modifier</button>

@@ -33,7 +33,12 @@ namespace ProjetFinal.Controllers
         [HttpPost]
         public ActionResult EditXpTable(FormCollection formCollection)
         {
-            projetFinalEntities1.Entry(new xpTable() {id = Int32.Parse(formCollection["id"]), name = formCollection["name"] }).State = System.Data.Entity.EntityState.Modified;
+            projetFinalEntities1.Entry(new xpTable()
+            {
+                id = Int32.Parse(formCollection["id"]),
+                name = formCollection["name"]
+            }
+            ).State = System.Data.Entity.EntityState.Modified;
             projetFinalEntities1.SaveChanges();
             return RedirectToAction("AllXpTable");
         }       
@@ -72,10 +77,31 @@ namespace ProjetFinal.Controllers
         [HttpPost]
         public ActionResult EditXp(FormCollection formCollection)
         {
-            //projetFinalEntities1.xps.AddOrUpdate(new xpTable() { id = Int32.Parse(formCollection["id"]), name = formCollection["name"] });
-
-            return RedirectToAction("index","Roles");
-            //return View(HttpContext.Request.UrlReferrer.AbsoluteUri);
+            xp xp;
+            if (!formCollection["table"].Equals(""))
+            {
+                xp = new xp()
+                {
+                    id = Int32.Parse(formCollection["id"]),
+                    id_xpTable = projetFinalEntities1.xpTables.ToList().Find(x => x.name == formCollection["table"]).id,
+                    lvl = Int32.Parse(formCollection["lvl"]),
+                    xps = Int32.Parse(formCollection["xps"]),
+                    dif = Int32.Parse(formCollection["dif"])
+                };
+            }
+            else
+            {
+                xp = new xp()
+                {
+                    id = Int32.Parse(formCollection["id"]),
+                    id_xpTable = projetFinalEntities1.xpTables.ToList().Find(x => x.name == formCollection["else"]).id,
+                    lvl = Int32.Parse(formCollection["lvl"]),
+                    xps = Int32.Parse(formCollection["xps"]),
+                    dif = Int32.Parse(formCollection["dif"])
+                };    
+            }
+            projetFinalEntities1.Entry(xp).State = System.Data.Entity.EntityState.Modified; projetFinalEntities1.SaveChanges();
+            return RedirectToAction("AllXp");  
         }
 
         public ActionResult DeleteXp(int idXp)
@@ -111,9 +137,30 @@ namespace ProjetFinal.Controllers
             return PartialView(skill);
         }
 
-        public ActionResult EditSkill()
+        public ActionResult EditSkill(FormCollection formCollection)
         {
-            return View();
+            skill skill;
+            if(!formCollection["name"].Equals(""))
+            {
+                skill = new skill()
+                {
+                    id = Int32.Parse(formCollection["id"]),
+                    id_xptable = projetFinalEntities1.xpTables.ToList().Find(x => x.name == formCollection["name"]).id,
+                    nameSkill = formCollection["nameSkill"]
+                };
+            }
+            else
+            {
+                skill = new skill()
+                {
+                    id = Int32.Parse(formCollection["id"]),
+                    id_xptable = projetFinalEntities1.xpTables.ToList().Find(x => x.name == formCollection["else"]).id,
+                    nameSkill = formCollection["nameSkill"]
+                };
+            }
+            projetFinalEntities1.Entry(skill).State = System.Data.Entity.EntityState.Modified;
+            projetFinalEntities1.SaveChanges();
+            return RedirectToAction("AllSkill");
         }
 
         public PartialViewResult AddSkill()
@@ -151,9 +198,32 @@ namespace ProjetFinal.Controllers
             return PartialView(competence);
         }
 
-        public ActionResult EditCompentence()
+        public ActionResult EditCompentence(FormCollection formCollection)
         {
-            return View();
+            competence competence;
+            if (!formCollection["nameSkill"].Equals(""))
+            {
+                competence = new competence()
+                {
+                    id = Int32.Parse(formCollection["id"]),
+                    id_skillName = projetFinalEntities1.skills.ToList().Find(x => x.nameSkill == formCollection["nameSkill"]).id,
+                    name = formCollection["name"],
+                    xp = Int32.Parse(formCollection["xp"])
+                };
+            }
+            else
+            {
+                competence = new competence()
+                {
+                    id = Int32.Parse(formCollection["id"]),
+                    id_skillName = projetFinalEntities1.skills.ToList().Find(x => x.nameSkill == formCollection["nameSkill"]).id,
+                    name = formCollection["name"],
+                    xp = Int32.Parse(formCollection["xp"])
+                };
+            }
+            projetFinalEntities1.Entry(competence).State = System.Data.Entity.EntityState.Modified;
+            projetFinalEntities1.SaveChanges();
+            return RedirectToAction("AllCompetence");
         } 
 
         public PartialViewResult AddCompetence()

@@ -40,7 +40,7 @@
 
             <tr id=@item.nameSkill@item.id class="collapse">
                 <td  colspan="3">
-                    @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+                    @using (Html.BeginForm("EditSkill", "Admin", FormMethod.Post))
                 {
                         @Html.AntiForgeryToken()
 
@@ -80,10 +80,10 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => item.xpTable.name, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.DropDownList("nameSkill", listName, item.xpTable.name)
+                                    @Html.DropDownList("name", listName, item.xpTable.name)
                                 </div>
                             </div>
-
+                            @Html.Hidden(name: "else", value: @item.xpTable.name)
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">

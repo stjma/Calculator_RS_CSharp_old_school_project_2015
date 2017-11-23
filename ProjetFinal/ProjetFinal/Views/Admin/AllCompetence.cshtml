@@ -48,7 +48,7 @@
 
             <tr id=@item.xp@item.name class="collapse">
                 <td  colspan="4">
-                    @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+                    @using (Html.BeginForm("EditCompentence", "Admin", FormMethod.Post))
                 {
                         @Html.AntiForgeryToken()
 
@@ -58,7 +58,7 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                            @Html.Hidden(name: "xp", value: @item.id)
+                            @Html.Hidden(name: "id", value: @item.id)
 
 
                             <div class="form-group">
@@ -71,7 +71,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => item.xp, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBox(name: "lvl", value: @item.xp)
+                                    @Html.TextBox(name: "xp", value: @item.xp)
                                 </div>
                             </div>
 
@@ -98,7 +98,7 @@
                                     @Html.DropDownList("nameSkill", listName, item.skill.nameSkill)
                                 </div>
                             </div>
-
+                            @Html.Hidden(name: "else", value: @item.skill.nameSkill)
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
