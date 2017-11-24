@@ -27,7 +27,7 @@
                 </td>
                 <td>
                     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id@item.name">Modifier</button>
-                    @Html.ActionLink("Details", "AllXp", null, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Details", "AllXp", new { idXpTable = item.id }, new { @class = "btn btn-info" })
                 </td>
             </tr>
 
