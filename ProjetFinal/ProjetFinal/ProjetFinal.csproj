@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -366,6 +367,10 @@
     <Content Include="Views\Admin\AddCompetence.cshtml" />
     <Content Include="Views\Admin\AddXp.cshtml" />
     <Content Include="Views\Admin\AddSkill.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\AllSkill.cshtml" />
+    <Content Include="Views\User\Recherche.cshtml" />
+    <Content Include="Views\User\Calcul.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

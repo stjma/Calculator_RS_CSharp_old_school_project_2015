@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProjetFinal.Models.skill>
+
+@{
+    ViewBag.Title = "AllSkill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllSkill</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nameSkill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.xpTable.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nameSkill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.xpTable.name)
+        </td>
+        <td>          
+            @Html.ActionLink("calcule", "Recherche", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
