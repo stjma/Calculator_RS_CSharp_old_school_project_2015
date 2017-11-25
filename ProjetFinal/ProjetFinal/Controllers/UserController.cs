@@ -7,11 +7,13 @@ using System.Web.Mvc;
 
 namespace ProjetFinal.Controllers
 {
+    [Authorize(Roles = "User")]
     public class UserController : Controller
     {
         private projetFinalEntities1 projetFinalEntities1 = new projetFinalEntities1();
 
         // GET: User
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProjetFinal.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private projetFinalEntities1 projetFinalEntities1 = new projetFinalEntities1();
