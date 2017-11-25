@@ -1,9 +1,3 @@
-﻿
-@{
-    //ViewBag.Title = "Erreur";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Erreur</h2>
+﻿<h2>Erreur</h2>
 <h1>@TempData["errorRechercheUser"]</h1>
-
+@Html.ActionLink("Retour", "Recherche")

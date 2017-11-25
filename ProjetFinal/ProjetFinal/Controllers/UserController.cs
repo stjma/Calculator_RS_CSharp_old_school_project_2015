@@ -105,7 +105,7 @@ namespace ProjetFinal.Controllers
                 }
                 else
                 {
-                    TempData["errorRechercheUser"] = "La valeur de xp actuel est plus grand que le lvl voulu" + xpMax + " " + xpVoulu;
+                    TempData["errorRechercheUser"] = "La valeur de xp voulu est plus grand que le lvl de départ";
                     return RedirectToAction("Erreur");
                 }
             }
