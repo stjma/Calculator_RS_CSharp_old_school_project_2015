@@ -10,6 +10,7 @@ namespace ProjetFinal.Controllers
     public class UserController : Controller
     {
         private projetFinalEntities1 projetFinalEntities1 = new projetFinalEntities1();
+
         // GET: User
         public ActionResult Index()
         {
@@ -21,7 +22,6 @@ namespace ProjetFinal.Controllers
             List<skill> listSkill = projetFinalEntities1.skills.ToList();
             return View(listSkill);
         }
-
 
         public ActionResult Recherche()
         {
@@ -44,17 +44,17 @@ namespace ProjetFinal.Controllers
 
             if(xpVoulu <= 0 && lvlActuel <= 0)
             {
-                ViewBag.errorRechercheUser = "xp actuel et lvl voulu sont vide";
+                TempData["errorRechercheUser"] = "xp actuel et lvl voulu sont vide";
                 return RedirectToAction("Erreur", new { id = 1 });
             }
             else if(xpVoulu <= 0)
             {
-                ViewBag.errorRechercheUser = "xp actuel est vide";
+                TempData["errorRechercheUser"] = "xp actuel est vide";
                 return RedirectToAction("Erreur", new { id = 2 });
             }
             else if(lvlActuel <= 0)
             {
-                ViewBag.errorRechercheUser = "lvl actuel est vide";
+                TempData["errorRechercheUser"] = "lvl actuel est vide";
                 return RedirectToAction("Erreur", new { id = 3 });
             }
 
@@ -63,9 +63,7 @@ namespace ProjetFinal.Controllers
             int DifXp = xpVoulu - xpLvl;
             if (xpVoulu <= xpMax && lvlActuel <= lvlMax)
             {
-                
 
-                
                 if (DifXp >= 1)
                 {
                     //https://stackoverflow.com/questions/26474579/viewbag-property-not-displaying-in-view
@@ -74,17 +72,17 @@ namespace ProjetFinal.Controllers
                 }
                 else
                 {
-                    ViewBag.errorRechercheUser = "La valeur de xp actuel est plus grand que le lvl voulu";
+                    TempData["errorRechercheUser"] = "La valeur de xp actuel est plus grand que le lvl voulu";
                     return RedirectToAction("Erreur", new { id = 4, xpLvl = xpLvl, xpVoulu= xpVoulu });
                 }
             }
             else
             {
-                ViewBag.errorRechercheUser = "Les chiffres entres sont trop grand pour les niveaus ou experiences";
+                TempData["errorRechercheUser"] = "Les chiffres entres sont trop grand pour les niveaus ou experiences";
                 return RedirectToAction("Erreur", new { id = 5, xpMax = xpMax, lvlMax = lvlMax, lvl = lvlActuel, xp = xpVoulu,  });
             }
 
-            return RedirectToAction("Calcul", new {id = id, DifXp  = DifXp });
+            return RedirectToAction("Calcul", new {id = id});           
         }
 
         public ActionResult Calcul(int id)

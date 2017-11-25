@@ -17,7 +17,7 @@
         @Html.Hidden(name:"idRecherche", value:ViewContext.RouteData.Values["id"])
 
         <div class="form-group">
-            @Html.Label("Xp que vous avez", "id_xptable", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Xp que vous avez", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
               @*@Html.TextArea(name:"xpActuel", value:"", htmlAttributes:new { htmlAttributes = new { @class = "form-control", @type = "number" } })*@
 
@@ -43,13 +43,9 @@
  }
 
 <div>
-    @Html.ActionLink("Back to List", "AllSkill")
+    @Html.ActionLink("Retour", "AllSkill")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-@*@Html.ActionLink("Delete", "DeleteXp", new { idXp = 1,  id = Recherche.GetElementById("NextAction").value,  xp = 1 ,  lvl = 1 }, new { @class = "btn btn-info" })*@
