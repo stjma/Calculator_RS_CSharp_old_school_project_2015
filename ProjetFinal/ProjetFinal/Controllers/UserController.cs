@@ -29,15 +29,48 @@ namespace ProjetFinal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Recherche(FormCollection formCollection, int? id)
+        public ActionResult Recherche(FormCollection formCollection)
         {
-            id = Int32.Parse(formCollection["idRecherche"]);
+            TempData.Remove("errorRechercheUser");
+            TempData.Remove("DifXp");
+            try
+            {
+            int id = -1;
+
+            if(formCollection["idRecherche"].Equals(""))
+            {
+                TempData["errorRechercheUser"] = "id vide";
+                return RedirectToAction("Erreur");
+            }
+            else
+            {
+                id = Int32.Parse(formCollection["idRecherche"]);
+            }         
 
             int findXpTable = (int)projetFinalEntities1.skills.ToList().Find(x => x.id == id).id_xptable;
-            
-            int lvlActuel = Int32.Parse(formCollection["lvlActuel"]);
 
-            int xpVoulu = Int32.Parse(formCollection["xpVoulu"]);
+            int lvlActuel = -1;
+            int xpVoulu = -1;
+            if (formCollection["lvlActuel"].Equals(""))
+            {
+                TempData["errorRechercheUser"] = "lvl Vide";
+                return RedirectToAction("Erreur");
+            }
+            else
+            {
+                lvlActuel = Int32.Parse(formCollection["lvlActuel"]);
+            }
+           
+            if(formCollection["xpVoulu"].Equals(""))
+            {
+                TempData["errorRechercheUser"] = "xp Vide";
+                return RedirectToAction("Erreur");
+            }
+            else
+            {
+                xpVoulu = Int32.Parse(formCollection["xpVoulu"]);
+            }
+          
 
             int xpMax = (int)projetFinalEntities1.xps.ToList().FindAll(x => x.id_xpTable == findXpTable).Max(x => x.xps);
             int lvlMax = projetFinalEntities1.xps.ToList().FindAll(x=>x.id_xpTable == findXpTable).Count();
@@ -45,25 +78,25 @@ namespace ProjetFinal.Controllers
             if(xpVoulu <= 0 && lvlActuel <= 0)
             {
                 TempData["errorRechercheUser"] = "xp actuel et lvl voulu sont vide";
-                return RedirectToAction("Erreur", new { id = 1 });
+                return RedirectToAction("Erreur");
             }
             else if(xpVoulu <= 0)
             {
                 TempData["errorRechercheUser"] = "xp actuel est vide";
-                return RedirectToAction("Erreur", new { id = 2 });
+                return RedirectToAction("Erreur");
             }
             else if(lvlActuel <= 0)
             {
                 TempData["errorRechercheUser"] = "lvl actuel est vide";
-                return RedirectToAction("Erreur", new { id = 3 });
+                return RedirectToAction("Erreur");
             }
 
-            List<xp> liste = projetFinalEntities1.xps.ToList().FindAll(x => x.lvl >= lvlActuel);
-            int xpLvl = (int)liste.Find(x => x.id_xpTable == findXpTable).xps;
-            int DifXp = xpVoulu - xpLvl;
+           
             if (xpVoulu <= xpMax && lvlActuel <= lvlMax)
             {
-
+                List<xp> liste = projetFinalEntities1.xps.ToList().FindAll(x => x.lvl >= lvlActuel);
+                int xpLvl = (int)liste.Find(x => x.id_xpTable == findXpTable).xps;
+                int DifXp = xpVoulu - xpLvl;
                 if (DifXp >= 1)
                 {
                     //https://stackoverflow.com/questions/26474579/viewbag-property-not-displaying-in-view
@@ -72,23 +105,34 @@ namespace ProjetFinal.Controllers
                 }
                 else
                 {
-                    TempData["errorRechercheUser"] = "La valeur de xp actuel est plus grand que le lvl voulu";
-                    return RedirectToAction("Erreur", new { id = 4, xpLvl = xpLvl, xpVoulu= xpVoulu });
+                    TempData["errorRechercheUser"] = "La valeur de xp actuel est plus grand que le lvl voulu" + xpMax + " " + xpVoulu;
+                    return RedirectToAction("Erreur");
                 }
             }
             else
             {
                 TempData["errorRechercheUser"] = "Les chiffres entres sont trop grand pour les niveaus ou experiences";
-                return RedirectToAction("Erreur", new { id = 5, xpMax = xpMax, lvlMax = lvlMax, lvl = lvlActuel, xp = xpVoulu,  });
+                return RedirectToAction("Erreur");
             }
 
-            return RedirectToAction("Calcul", new {id = id});           
+            return RedirectToAction("Calcul", new {id = id});
+            }
+            catch(Exception e)
+            {
+                TempData["errorRechercheUser"] = "Désoler un erreur ces produit";
+                return RedirectToAction("Erreur");
+            }
         }
 
-        public ActionResult Calcul(int id)
+        public PartialViewResult Calcul(int id)
         {          
             List<competence> listComp = projetFinalEntities1.competences.ToList().FindAll(x => x.id_skillName == id);
-            return View(listComp);
+            return PartialView(listComp);
+        }
+
+        public PartialViewResult Erreur()
+        {
+            return PartialView();
         }
     }
 }

@@ -371,6 +371,7 @@
     <Content Include="Views\User\AllSkill.cshtml" />
     <Content Include="Views\User\Recherche.cshtml" />
     <Content Include="Views\User\Calcul.cshtml" />
+    <Content Include="Views\User\Erreur.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

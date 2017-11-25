@@ -4,13 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <h2>Recherche</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+@using (@*Html.BeginForm())*@
 
-    <div class="form-horizontal">
+
+    Ajax.BeginForm("Recherche", "User",
+
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "partielView"
+    }
+))
+{
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
         <h4>skill</h4>
         <hr />
 
@@ -42,10 +55,11 @@
     </div>
  }
 
-<div>
-    @Html.ActionLink("Retour", "AllSkill")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<div id="partielView">
+
+</div>
