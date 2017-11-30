@@ -1,20 +1,14 @@
 ﻿@model IEnumerable<ProjetFinal.Models.competence>
 
 @{
-    //ViewBag.Title = "Calcul";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Calcul"; 
 }
 
 
 <h2>Calcul</h2>
 @{ if (Model.Count() != 0)
     {
-@*<p>
-    @Html.ActionLink("Retour", "Recherche")
-</p>
-<p>
-    @Html.ActionLink("Nouveau calcul", "AllSkill")
-</p>*@
+
 
         <p>Vous devez augmenter de @TempData["DifXp"] pour réussir votre objectif</p>
         <table class="table">
@@ -55,4 +49,4 @@
    <p>Désoler aucune compétence</p>   
    }
 }
-@Html.ActionLink("Retour", "AllSkill")
+@Html.ActionLink("Retour", "AllSkill", null , new { @class = "btn btn-info" })

@@ -18,7 +18,7 @@ namespace ProjetFinal.Models
     {
         public int id { get; set; }
 
-        [Required]
+        [DisplayName("Table d'expérience")]
         public Nullable<int> id_xpTable { get; set; }
 
         [Required, RegularExpression(pattern: "^[1-9][0-9]{0,2}$", ErrorMessage = "Niveau doit être des nombres"), DisplayName("Niveau")]
@@ -29,7 +29,8 @@ namespace ProjetFinal.Models
 
         [Required, RegularExpression(pattern: "^[1-9][0-9]{0,8}$", ErrorMessage = "Expérience doit être des nombres qui commence par 1"), DisplayName("Diférence")]
         public Nullable<int> dif { get; set; }
-    
+
+        [DisplayName("Table d'expérience")]
         public virtual xpTable xpTable { get; set; }
     }
 }

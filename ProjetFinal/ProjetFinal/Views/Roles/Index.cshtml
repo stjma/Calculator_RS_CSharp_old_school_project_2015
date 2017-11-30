@@ -9,7 +9,7 @@
 
 <div id="partielAdmin">
     <div class="row col-sm-12 col-lg-12 col-md-12">
-        <h1>Role Manager</h1>
+        <h1>Gestion des rôle</h1>
        
         <br />
     </div>
@@ -21,7 +21,7 @@
         <div class="col-sm-6 col-lg-6 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>Role List</h4>
+                    <h4>Liste des rôle</h4>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped table-hover col-sm-6 col-lg-6 col-md-6 ">
@@ -32,8 +32,8 @@
                                     <strong>@role.Text </strong>
                                 </td>
                                 <td class="col-sm-1 col-lg-1 col-md-1">
-                                    @Ajax.ActionLink("Edit", "Edit", "Roles", new { roleName = @role.Text }, ao, null) |
-                                    <span onclick="return confirm('Are you sure to delete?')"><a href="/Roles/Delete?RoleName=@role.Text" class="delLink" style="color:red;">Delete</a></span>
+                                    @Ajax.ActionLink("Modifier", "Edit", "Roles", new { roleName = @role.Text }, ao, null) |
+                                    <span onclick="return confirm('Êtes-vous sûr de vouloir supprimer le rôle?')"><a href="/Roles/Delete?RoleName=@role.Text" class="delLink" style="color:red;">Supprimer</a></span>
 
                                 </td>
                             </tr>
@@ -44,7 +44,7 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>Create A New Role</h4>
+                    <h4>Créer un rôle</h4>
                 </div>
                 <div class="panel-body">
                     @using (Html.BeginForm("Create", "Roles", new { @class = "form-horizontal" }))
@@ -53,8 +53,8 @@
                         @Html.ValidationSummary(true)
 
                         <div>
-                            Role name: @Html.TextBox("RoleName")
-                            <input type="submit" value="Save" class="btn-primary" />
+                            Nom du rôle: @Html.TextBox("RoleName")
+                            <input type="submit" value="Sauvegarder" class="btn-primary" />
                         </div>
                      }
 
@@ -69,7 +69,7 @@
         <div class="col-sm-6 col-lg-6 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>Add a Role to a User</h4>
+                    <h4>Ajouter un rôle a un utilisateur</h4>
                 </div>
                 <div class="panel-body">
                     @using (Html.BeginForm("RoleAddToUser", "Roles"))
@@ -77,9 +77,9 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
 
-                        <p>User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
-                        <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
-                        <p><input type="submit" value="Save" class="btn-primary" /></p>
+                        <p>Nom d'utilisateur: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
+                        <p>Nom du rôle: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
+                        <p><input type="submit" value="Sauvegarder" class="btn-primary" /></p>
 
                      }
                 </div> <!-- End Panel Body-->
@@ -95,8 +95,8 @@
                      {
                         @Html.AntiForgeryToken()
                         <p>
-                            User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
-                            <input type="submit" value="Get Roles for this User" class="btn-primary" />
+                            Nom d'utilisateur: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+                            <input type="submit" value="Recherche des rôle" />
                         </p>
                      }
 
@@ -125,9 +125,9 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
 
-                        <p>User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
-                        <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
-                        <p><input type="submit" value="Delete this user from Role" class="btn-primary" /></p>
+                        <p>Nom d'utilisateur: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
+                        <p>Nom du rôle: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
+                        <p><input type="submit" value="Supprimer le rôle" class="btn-primary" /></p>
 
                      }
                 </div> <!-- End Panel Body-->

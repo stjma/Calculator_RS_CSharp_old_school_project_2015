@@ -25,7 +25,8 @@ namespace ProjetFinal.Models
 
       
         public int id { get; set; }
-     
+
+        [DisplayName("Table d'expérience")]
         public Nullable<int> id_xptable { get; set; }
 
         [Required, RegularExpression(pattern: @"^[a-zA-Z0-9\s]{1,30}$", ErrorMessage = "La Compétence doit contenir seulement des lettres"), DisplayName("Compétence")]
