@@ -107,23 +107,23 @@ namespace ProjetFinal.Controllers
                 //l'expérience voulu doit être plus petit que le niveau actuel
                 if (xpVoulu <= 0 && lvlActuel <= 0)
                 {
-                    TempData["errorRechercheUser"] = "xp actuel et lvl voulu sont vide";
+                    TempData["errorRechercheUser"] = "xp actuel et lvl voulu sont vide ou 0";
                     return RedirectToAction("Erreur");
                 }
 
                 //l'expérience voulu doit être plus grand que 0
-                else if (xpVoulu < 0)
+                else if (xpVoulu <= 0)
                 {
                     //Redirection vers une page d'erreur 
-                    TempData["errorRechercheUser"] = "xp actuel est vide";
+                    TempData["errorRechercheUser"] = "xp actuel est vide ou 0";
                     return RedirectToAction("Erreur");
                 }
 
                 //Le niveau actuel doit être plus grand que 0
-                else if (lvlActuel < 0)
+                else if (lvlActuel <= 0)
                 {
                     //Redirection vers une page d'erreur
-                    TempData["errorRechercheUser"] = "lvl actuel est vide";
+                    TempData["errorRechercheUser"] = "lvl actuel est vide ou 0";
                     return RedirectToAction("Erreur");
                 }
 
