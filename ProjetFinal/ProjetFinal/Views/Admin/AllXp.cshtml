@@ -93,6 +93,7 @@
                             </div>
 
                             @{
+                                //Remplir le dropdownlist
                                 List<SelectListItem> listName = new List<SelectListItem>();
 
                                 projetFinalEntities1 projetFinalEntities = new projetFinalEntities1();
@@ -102,7 +103,7 @@
                                 {
                                     if (xpTable.name != item.xpTable.name)
                                     {
-                                    listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
+                                        listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
                                     }
                                 }
 
