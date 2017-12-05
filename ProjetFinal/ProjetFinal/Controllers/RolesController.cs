@@ -10,7 +10,7 @@ using System.Web.Mvc.Ajax;
 
 namespace ProjetFinal.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {        
             public ActionResult Index()
