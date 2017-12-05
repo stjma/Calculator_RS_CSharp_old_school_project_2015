@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tous les Skills</h2>
+<h2>Tous les Compétences</h2>
 
 <table class="table">
     <tr>
@@ -27,7 +27,7 @@
             @Html.DisplayFor(modelItem => item.xpTable.name)
         </td>
         <td>          
-            @Html.ActionLink("calcule", "Recherche", new { id=item.id })
+            @Html.ActionLink("calcule", "Recherche", new { id=item.id }, new { @class="btn btn-info" })
         </td>
     </tr>
 }

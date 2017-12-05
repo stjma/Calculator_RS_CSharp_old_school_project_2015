@@ -6,7 +6,12 @@
 }
 @Html.Partial("_AdminOption")
 
-<h2>AllCompetence</h2>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+<h2>Compétence</h2>
 
 <div id="PartialCompetence">
     <p>
@@ -42,14 +47,14 @@
                     @Html.DisplayFor(modelItem => item.skill.nameSkill)
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.xp@item.name">Modifier</button>
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id">Modifier</button>
                 </td>
             </tr>
 
-            <tr id=@item.xp@item.name class="collapse">
+            <tr id=@item.id class="collapse">
                 <td  colspan="4">
                     @using (Html.BeginForm("EditCompentence", "Admin", FormMethod.Post))
-                {
+                     {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
@@ -60,23 +65,26 @@
 
                             @Html.Hidden(name: "id", value: @item.id)
 
-
+                        
                             <div class="form-group">
                                 @Html.LabelFor(model => item.name, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBox(name: "name", value: @item.name)
+                                    @Html.EditorFor(model => item.name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => item.name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 @Html.LabelFor(model => item.xp, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBox(name: "xp", value: @item.xp)
+                                    @Html.EditorFor(model => item.xp, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => item.xp, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
 
                             @{
+                                //Remplir le dropdownlist
                                 List<SelectListItem> listName = new List<SelectListItem>();
 
                                 projetFinalEntities1 projetFinalEntities = new projetFinalEntities1();
@@ -110,6 +118,5 @@
                 </td>
             </tr>
          }
-
     </table>
 </div>

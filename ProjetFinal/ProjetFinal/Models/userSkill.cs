@@ -11,13 +11,23 @@ namespace ProjetFinal.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class userSkill
     {
         public int id { get; set; }
+
+        [Required(ErrorMessage = "Compétence table requis")]
         public Nullable<int> id_skill { get; set; }
+
+        [Required]
         public string id_user { get; set; }
+
+        [Required, RegularExpression(pattern: "^[1-9][0-9]{0,2}$", ErrorMessage = "Niveau doit être des nombres"), DisplayName("Niveau")]
         public Nullable<int> lvl { get; set; }
+
+        [Required(ErrorMessage = "Expérience requis"), DisplayName("Expérience")]
         public Nullable<decimal> xp { get; set; }
     
         public virtual skill skill { get; set; }

@@ -11,15 +11,26 @@ namespace ProjetFinal.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class xp
     {
         public int id { get; set; }
+
+        [DisplayName("Table d'expérience")]
         public Nullable<int> id_xpTable { get; set; }
+
+        [Required, RegularExpression(pattern: "^[1-9][0-9]{0,2}$", ErrorMessage = "Niveau doit être des nombres"), DisplayName("Niveau")]
         public Nullable<int> lvl { get; set; }
+
+        [Required, RegularExpression(pattern: "^[0-9]{1,9}$", ErrorMessage = "Expérience doit être des nombres"), DisplayName("Expérience")]
         public Nullable<int> xps { get; set; }
+
+        [Required, RegularExpression(pattern: "^[1-9][0-9]{0,8}$", ErrorMessage = "Expérience doit être des nombres qui commence par 1"), DisplayName("Diférence")]
         public Nullable<int> dif { get; set; }
-    
+
+        [DisplayName("Table d'expérience")]
         public virtual xpTable xpTable { get; set; }
     }
 }

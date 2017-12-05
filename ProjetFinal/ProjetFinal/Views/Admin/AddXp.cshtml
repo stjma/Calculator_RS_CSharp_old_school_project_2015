@@ -1,6 +1,10 @@
 ﻿@model ProjetFinal.Models.xp
 @using ProjetFinal.Models;
 
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -8,22 +12,21 @@
     <div class="form-horizontal">
         <h4>xp</h4>
         <hr />
-
-
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @{
+            //Remplir le dropdownlist
             List<SelectListItem> listName = new List<SelectListItem>();
 
             projetFinalEntities1 projetFinalEntities = new projetFinalEntities1();
 
 
             foreach (xpTable xpTable in projetFinalEntities.xpTables.ToList())
-            {             
-                    listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
+            {
+                listName.Add(new SelectListItem() { Text = xpTable.name, Value = xpTable.name });
             }
 
         }
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      
         <div class="form-group">
             @Html.LabelFor(model => model.id_xpTable, "id_xpTable", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -67,6 +70,8 @@
 <div>
     @Html.ActionLink("Back to List", "AllXp")
 </div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

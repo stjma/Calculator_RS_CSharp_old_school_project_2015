@@ -11,7 +11,9 @@ namespace ProjetFinal.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class xpTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +24,8 @@ namespace ProjetFinal.Models
         }
     
         public int id { get; set; }
+
+        [Required, RegularExpression(pattern: @"^[a-zA-Z0-9\s]{1,30}$", ErrorMessage = "Le nom doit contenir seulement des lettres"), DisplayName("Nom")]
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

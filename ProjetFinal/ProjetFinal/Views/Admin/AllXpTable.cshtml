@@ -6,7 +6,11 @@
 }
 @Html.Partial("_AdminOption")
 
-<h2>AllXpTable</h2>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<h2>Table d'expérience</h2>
 <div id="ParialXpTable">
     <p>
         @Ajax.ActionLink("Ajouter table", "AddXpTable", "Admin", new AjaxOptions() { UpdateTargetId = "ParialXpTable", InsertionMode = InsertionMode.Replace })
@@ -26,12 +30,12 @@
                     @Html.DisplayFor(modelItem => item.name)
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id@item.name">Modifier</button>
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.id">Modifier</button>
                     @Html.ActionLink("Details", "AllXp", new { idXpTable = item.id }, new { @class = "btn btn-info" })
                 </td>
             </tr>
 
-            <tr id=@item.id@item.name class="collapse">
+            <tr id=@item.id class="collapse">
                 <td colspan="2">
                     @using (Html.BeginForm("EditXpTable", "Admin", FormMethod.Post))
                     {
@@ -45,10 +49,12 @@
 
                             @Html.Hidden(name: "id", value: @item.id)
 
+                         
                             <div class="form-group">
                                 @Html.LabelFor(model => item.name, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBox(name: "name", value: @item.name)
+                                    @Html.EditorFor(model => item.name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => item.name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
