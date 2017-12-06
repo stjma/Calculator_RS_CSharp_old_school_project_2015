@@ -11,23 +11,14 @@ namespace ProjetFinal.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class competence
     {
-        [Required]
         public int id { get; set; }
-
-        [Required]
         public Nullable<int> id_skillName { get; set; }
-        
-        [Required, RegularExpression(pattern: @"^[a-zA-Z0-9\s]{1,30}$", ErrorMessage = "Le nom doit contenir seulement des lettres"), DisplayName("Nom")]
         public string name { get; set; }
-
-        [Required, RegularExpression(pattern: "^[1-9][0-9]{1,8}$", ErrorMessage = "Expérience doit être des nombres"), DisplayName("Expérience")]
         public Nullable<int> xp { get; set; }
-
+    
         public virtual skill skill { get; set; }
     }
 }

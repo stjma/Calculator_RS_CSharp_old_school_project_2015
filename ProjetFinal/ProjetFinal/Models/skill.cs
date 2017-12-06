@@ -11,9 +11,7 @@ namespace ProjetFinal.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class skill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +20,9 @@ namespace ProjetFinal.Models
             this.competences = new HashSet<competence>();
             this.userSkills = new HashSet<userSkill>();
         }
-
-      
+    
         public int id { get; set; }
-
-        [DisplayName("Table d'expérience")]
         public Nullable<int> id_xptable { get; set; }
-
-        [Required, RegularExpression(pattern: @"^[a-zA-Z0-9\s]{1,30}$", ErrorMessage = "La Compétence doit contenir seulement des lettres"), DisplayName("Compétence")]
         public string nameSkill { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

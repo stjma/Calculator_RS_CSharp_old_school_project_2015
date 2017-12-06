@@ -12,9 +12,24 @@
 
 <h2>Attribut</h2>
 
+@* le Ajax pour ajouter une compétence *@
+<script type="text/javascript">
+   
+    function AddSkill() {       
+        $.ajax({
+            type: "GET",
+            url: "/Admin/AddSkill",
+            success: function (result) {
+                $('#PartialSkill').html(result);
+            },          
+        });
+    }
+</script>
+
+
 <div id="PartialSkill">
-    <p>
-        @Ajax.ActionLink("Ajouter skill", "AddSkill", "Admin", new AjaxOptions() { UpdateTargetId = "PartialSkill", InsertionMode = InsertionMode.Replace })
+    <p>      
+        <input type="button" value="Ajouter" class = "btn btn-info"  onclick='AddSkill()'  />
     </p>
 
     <table class="table">
@@ -39,12 +54,12 @@
                 </td>
                 <td>
                     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#@item.nameSkill@item.id">Modifier</button>
-                    @Html.ActionLink("Details", "AllCompetence", new { idSkill = item.id }, new { @class = "btn btn-info" })                    
+                    @Html.ActionLink("Details", "AllCompetence", new { idSkill = item.id }, new { @class = "btn btn-info" })
                 </td>
             </tr>
 
             <tr id=@item.nameSkill@item.id class="collapse">
-                <td  colspan="3">
+                <td colspan="3">
                     @using (Html.BeginForm("EditSkill", "Admin", FormMethod.Post))
                 {
                         @Html.AntiForgeryToken()
@@ -98,10 +113,10 @@
                                 </div>
                             </div>
                         </div>
-                     }
+                                }
                 </td>
             </tr>
-         }
+                                }
 
     </table>
 </div>
